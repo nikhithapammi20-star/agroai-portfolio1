@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AgroAI — a student concept for AI-powered smart agriculture using crop intelligence, IoT monitoring, and data-driven recommendations.">
+<title>AgroAI | AI-Powered Smart Agriculture</title>
+<style>
+:root{--green:#17834b;--lime:#9be66d;--deep:#092b25;--ink:#132b26;--muted:#64756f;--pale:#eff8f1;--white:#fff;--line:#dfeae2;--shadow:0 16px 45px rgba(15,55,39,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.6}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.container{width:min(1160px,calc(100% - 40px));margin:auto}
+header{height:76px;position:sticky;top:0;z-index:20;background:rgba(7,39,33,.96);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid #ffffff18}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;letter-spacing:-.5px}.brand-mark{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,#b1f58a,#39bd71);display:grid;place-items:center;color:#073a28;font-size:23px}.brand small{display:block;font-size:.64rem;color:#c4d8cd;font-weight:500;letter-spacing:.6px}.navlinks{display:flex;align-items:center;gap:27px;font-size:.9rem;color:#d9e7df}.navlinks a:hover,.navlinks a.active{color:var(--lime)}.nav-cta,.btn{border:0;border-radius:999px;padding:12px 19px;font-weight:750;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}.nav-cta,.btn-primary{background:var(--lime);color:#123526}.nav-cta:hover,.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px #9be66d45}.menu-toggle{display:none;background:transparent;color:#fff;border:1px solid #ffffff40;border-radius:10px;padding:8px 11px}
+.hero{min-height:590px;display:flex;align-items:center;color:white;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(4,34,25,.91) 0%,rgba(5,39,27,.72) 43%,rgba(6,40,25,.18) 100%),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:130px;background:linear-gradient(transparent,#0b2d251c);pointer-events:none}.hero-content{position:relative;z-index:1;max-width:710px;padding:82px 0 98px}.eyebrow{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:1.7px;font-size:.75rem;font-weight:800;color:#b8f58d}.dot{height:8px;width:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px #9be66d20}.hero h1{font-size:clamp(2.7rem,6vw,5.35rem);line-height:1.02;letter-spacing:-3px;margin:20px 0}.hero h1 span{color:var(--lime)}.hero p{max-width:560px;color:#e2eee7;font-size:1.1rem;margin:0 0 28px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn-outline{color:white;background:#ffffff12;border:1px solid #ffffff80}.btn-outline:hover{background:#ffffff25}.hero-tags{display:flex;flex-wrap:wrap;gap:18px;margin-top:35px;color:#dce9e1;font-size:.88rem}.hero-tags span{display:flex;align-items:center;gap:7px}.hero-tags b{color:var(--lime);font-size:1.05rem}
+.section{padding:82px 0}.section.soft{background:linear-gradient(130deg,#f3faf4,#f8fbf8)}.section-head{max-width:690px;margin-bottom:34px}.kicker{font-size:.76rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--green);font-weight:850}.section h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-1.4px;margin:8px 0 14px}.section-head p,.about-copy p{color:var(--muted);margin:0;font-size:1.02rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.about-visual{position:relative;min-height:385px;border-radius:28px;overflow:hidden;background:url('https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=1100&q=85') center/cover;box-shadow:var(--shadow)}.floating-card{position:absolute;bottom:22px;left:22px;right:22px;background:#fffef2ee;backdrop-filter:blur(12px);padding:20px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.floating-card strong{display:block;font-size:1.02rem}.floating-card small{color:var(--muted)}.pulse{height:44px;width:44px;flex-shrink:0;border-radius:14px;background:#dcf7df;display:grid;place-items:center;color:var(--green);font-size:1.35rem}.benefits{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.benefit{display:flex;gap:12px;align-items:flex-start}.benefit .pulse{width:39px;height:39px;font-size:1.1rem}.benefit strong{display:block;font-size:.95rem}.benefit small{color:var(--muted);font-size:.84rem}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.feature{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px 22px;transition:.25s;box-shadow:0 4px 15px #0a3b2510}.feature:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#a6dfb4}.feature-icon{width:51px;height:51px;border-radius:16px;background:#e4f8e7;display:grid;place-items:center;font-size:1.55rem;margin-bottom:20px}.feature h3{font-size:1.04rem;margin:0 0 8px}.feature p{font-size:.9rem;color:var(--muted);margin:0}.feature .tag{display:inline-block;margin-top:18px;color:var(--green);font-size:.74rem;font-weight:800;background:#eef9ef;border-radius:999px;padding:5px 9px}
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px}.step{padding:0 23px;position:relative}.step:not(:last-child):after{content:"";position:absolute;top:24px;left:65px;right:-5px;border-top:1px dashed #a6c9af}.step-num{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--deep);color:var(--lime);font-weight:850;margin-bottom:18px;border:5px solid #e5f5e7;box-sizing:content-box}.step h3{font-size:1rem;margin:0 0 7px}.step p{font-size:.87rem;color:var(--muted);margin:0}
+.demo-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;align-items:center}.demo-copy p{color:var(--muted)}.demo-list{padding:0;list-style:none;display:grid;gap:13px;margin:25px 0}.demo-list li{display:flex;gap:10px;align-items:center}.check{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dcf6df;color:var(--green);font-weight:900;flex-shrink:0}
+.dashboard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.dash-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.dash-top h3{margin:0;font-size:1.05rem}.status{font-size:.75rem;color:#177c43;background:#e5f8e9;padding:6px 10px;border-radius:999px;font-weight:800}.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.metric{background:#f4faf5;border-radius:15px;padding:15px 12px}.metric small{display:block;color:var(--muted);font-size:.76rem}.metric strong{font-size:1.35rem;display:block;margin:4px 0}.metric em{font-style:normal;color:var(--green);font-size:.74rem}.chart-box{margin-top:15px;padding:17px;border:1px solid var(--line);border-radius:16px}.chart-head{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;font-weight:800}.chart-head span{color:var(--muted);font-weight:500}.chart{height:112px;display:flex;align-items:flex-end;gap:9px;padding:12px 3px 0;border-bottom:1px solid #dbe8de}.bar{flex:1;min-width:7px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#8fe66d,#279d5b);transition:height .3s}.chart-labels{display:flex;justify-content:space-between;color:#87948c;font-size:.68rem;margin-top:6px}.dash-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:15px}.dash-controls label{font-size:.82rem;color:var(--muted)}select{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:17px}.gallery-card{border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:.2s}.gallery-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.gallery-img{height:210px;background-size:cover;background-position:center;position:relative}.gallery-card:first-child .gallery-img{height:260px}.gallery-img:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#082b2040)}.gallery-text{padding:19px}.gallery-text h3{font-size:1rem;margin:0 0 5px}.gallery-text p{font-size:.86rem;color:var(--muted);margin:0}.pill{display:inline-block;background:#e9f7e9;color:var(--green);font-size:.72rem;font-weight:800;border-radius:99px;padding:5px 9px;margin-bottom:10px}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.impact{padding:23px;border:1px solid var(--line);border-radius:18px;background:#fff}.impact strong{font-size:2.1rem;letter-spacing:-1px;color:var(--green);display:block;line-height:1.2}.impact span{font-weight:750;display:block;margin:7px 0 3px}.impact p{font-size:.82rem;color:var(--muted);margin:0}.disclaimer{margin-top:18px;color:#718078;font-size:.78rem}
+.contact-panel{background:linear-gradient(120deg,#0a3028,#135c3b);color:white;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr .8fr;gap:35px;align-items:center}.contact-panel h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;margin:8px 0 15px;letter-spacing:-1px}.contact-panel p{color:#d1e6d8;max-width:560px}.contact-form{display:grid;gap:12px}.contact-form input,.contact-form textarea{width:100%;padding:13px 14px;border:1px solid #ffffff42;border-radius:12px;background:#ffffff12;color:#fff;outline:none;font:inherit}.contact-form input::placeholder,.contact-form textarea::placeholder{color:#c7ddd0}.contact-form textarea{min-height:100px;resize:vertical}.contact-form input:focus,.contact-form textarea:focus{border-color:var(--lime)}.form-message{font-size:.85rem;color:var(--lime);min-height:22px}
+footer{background:#06251f;color:#d0e1d7;padding:28px 0}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-row p{font-size:.8rem;color:#9bb5a7;margin:0}.footer-links{display:flex;gap:18px;font-size:.82rem}.footer-links a:hover{color:var(--lime)}
+.toast{position:fixed;bottom:22px;right:22px;z-index:50;background:#0c3c2b;color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);transform:translateY(120px);opacity:0;transition:.3s}.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:900px){.navlinks{gap:15px}.navlinks a{font-size:.82rem}.feature-grid{grid-template-columns:repeat(2,1fr)}.about-grid{gap:30px}.gallery-grid{grid-template-columns:1fr 1fr}.gallery-card:first-child{grid-column:span 2}.impact-grid{grid-template-columns:repeat(2,1fr)}.contact-panel{padding:34px;grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.container{width:min(100% - 30px,1160px)}header{height:68px}.menu-toggle{display:block}.nav-cta{display:none}.navlinks{display:none;position:absolute;top:67px;left:0;right:0;padding:18px 22px 22px;background:#082b25;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid #ffffff20}.navlinks.open{display:flex}.navlinks a{padding:12px 4px;border-bottom:1px solid #ffffff14;font-size:.95rem}.hero{min-height:570px;background-position:58% center}.hero-content{padding:68px 0 78px}.hero h1{letter-spacing:-1.8px}.hero p{font-size:1rem}.hero-tags{gap:12px;font-size:.8rem}.section{padding:60px 0}.about-grid,.demo-layout,.contact-panel{grid-template-columns:1fr}.about-visual{min-height:300px;order:-1}.benefits{gap:14px}.feature-grid{grid-template-columns:1fr 1fr;gap:11px}.feature{padding:20px 16px}.workflow{grid-template-columns:1fr 1fr;gap:25px 0}.step{padding:0 12px}.step:nth-child(2):after{display:none}.step:not(:last-child):after{right:-7px;left:60px}.dash-grid{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:span 2}.gallery-grid{grid-template-columns:1fr}.gallery-card:first-child{grid-column:auto}.gallery-card:first-child .gallery-img,.gallery-img{height:210px}.impact-grid{grid-template-columns:1fr 1fr}.contact-panel{padding:27px 22px}.footer-row{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}}
+@media(max-width:390px){.feature-grid,.impact-grid{grid-template-columns:1fr}.hero h1{font-size:2.6rem}.workflow{grid-template-columns:1fr}.step:after{display:none!important}.floating-card{left:12px;right:12px;bottom:12px;padding:14px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="container nav">
+  <a class="brand" href="#home" aria-label="AgroAI home"><span class="brand-mark">✿</span><span>AgroAI<small>SMART FARMING · BETTER TOMORROW</small></span></a>
+  <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+   <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#features">Features</a><a href="#workflow">How It Works</a><a href="#gallery">Gallery</a><a href="#impact">Impact</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Let's Connect ↗</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+ </div>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="container"><div class="hero-content">
+  <div class="eyebrow"><span class="dot"></span> Agriculture meets intelligence</div>
+  <h1>Grow smarter.<br><span>Harvest better.</span></h1>
+  <p>An AI-powered smart agriculture concept that brings crop insights, soil monitoring, and data-driven recommendations together to support healthier, more sustainable farming.</p>
+  <div class="actions"><a class="btn btn-primary" href="#about">Explore the Project <span>↗</span></a><a class="btn btn-outline" href="#features">Discover Features</a></div>
+  <div class="hero-tags"><span><b>✦</b> AI crop insights</span><span><b>⌁</b> IoT-ready monitoring</span><span><b>♧</b> Sustainability-first</span></div>
+ </div></div>
+</section>
+
+<section class="section" id="about">
+ <div class="container about-grid">
+  <div class="about-copy">
+   <div class="kicker">01 / About the project</div>
+   <h2>Better farming starts with better information.</h2>
+   <p>AgroAI is a student portfolio concept for a smart farming platform. It illustrates how artificial intelligence, connected sensors, and a simple web dashboard could help farmers understand field conditions and make timely decisions.</p>
+   <p style="margin-top:13px">The goal is practical: use water thoughtfully, notice crop issues earlier, and make farm data easier to understand—even for first-time technology users.</p>
+   <div class="benefits">
+    <div class="benefit"><span class="pulse">↗</span><div><strong>Crop intelligence</strong><small>Turn field observations into insights.</small></div></div>
+    <div class="benefit"><span class="pulse">◉</span><div><strong>Resource awareness</strong><small>Track soil and weather conditions.</small></div></div>
+    <div class="benefit"><span class="pulse">⌕</span><div><strong>Early warnings</strong><small>Flag possible crop stress sooner.</small></div></div>
+    <div class="benefit"><span class="pulse">♧</span><div><strong>Sustainable choices</strong><small>Support careful use of resources.</small></div></div>
+   </div>
+  </div>
+  <div class="about-visual" role="img" aria-label="Green agricultural field">
+   <div class="floating-card"><div><strong>From field signals to useful decisions</strong><small>A unified view for the modern farm</small></div><span class="pulse">✦</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section soft" id="features">
+ <div class="container">
+  <div class="section-head"><div class="kicker">02 / What it can do</div><h2>Smart tools for everyday farming.</h2><p>Designed as modular features that could be developed and tested one step at a time.</p></div>
+  <div class="feature-grid">
+   <article class="feature"><div class="feature-icon">🌿</div><h3>Crop Health Insights</h3><p>Use plant images and AI-assisted analysis to highlight possible signs of stress or disease for further inspection.</p><span class="tag">Computer vision</span></article>
+   <article class="feature"><div class="feature-icon">💧</div><h3>Soil & Moisture Watch</h3><p>Present sensor readings in a clear dashboard and help users understand when soil conditions may need attention.</p><span class="tag">IoT monitoring</span></article>
+   <article class="feature"><div class="feature-icon">☀️</div><h3>Weather-Aware Tips</h3><p>Combine local weather information with field readings to support better-timed irrigation and farm tasks.</p><span class="tag">Decision support</span></article>
+   <article class="feature"><div class="feature-icon">🔔</div><h3>Alerts & Reports</h3><p>Show unusual readings, summarize trends, and make important changes easier to spot at a glance.</p><span class="tag">Live dashboard concept</span></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="workflow">
+ <div class="container">
+  <div class="section-head"><div class="kicker">03 / How it works</div><h2>Four steps from field to insight.</h2><p>A simple system flow makes the project easier to explain, prototype, and improve.</p></div>
+  <div class="workflow">
+   <div class="step"><div class="step-num">01</div><h3>Collect</h3><p>Gather field readings such as soil moisture, temperature, and crop photos.</p></div>
+   <div class="step"><div class="step-num">02</div><h3>Analyze</h3><p>Use rules or trained AI models to interpret patterns and identify potential concerns.</p></div>
+   <div class="step"><div class="step-num">03</div><h3>Recommend</h3><p>Translate the analysis into understandable tips and alerts for the user.</p></div>
+   <div class="step"><div class="step-num">04</div><h3>Improve</h3><p>Review trends over time and refine the system with field feedback.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section soft" id="demo">
+ <div class="container demo-layout">
+  <div class="demo-copy"><div class="kicker">04 / Interactive preview</div><h2>A small glimpse of the farm dashboard.</h2><p>Try the demo controls to see how the dashboard might respond to different field conditions. These are sample values for demonstration, not live sensor readings.</p>
+   <ul class="demo-list"><li><span class="check">✓</span> Readable field indicators</li><li><span class="check">✓</span> Simple trend visualization</li><li><span class="check">✓</span> Responsive desktop and mobile layout</li></ul>
+   <a class="btn btn-primary" href="#contact">Discuss the concept ↗</a>
+  </div>
+  <div class="dashboard">
+   <div class="dash-top"><div><div class="kicker">AgroAI / FIELD 01</div><h3>Field conditions</h3></div><span class="status" id="fieldStatus">● Conditions stable</span></div>
+   <div class="dash-grid">
+    <div class="metric"><small>Soil moisture</small><strong id="moistureValue">65%</strong><em id="moistureNote">Good range</em></div>
+    <div class="metric"><small>Temperature</small><strong id="tempValue">28°C</strong><em>Field estimate</em></div>
+    <div class="metric"><small>Crop health</small><strong id="healthValue">92%</strong><em id="healthNote">Healthy signals</em></div>
+   </div>
+   <div class="chart-box"><div class="chart-head">Moisture trend <span>Sample · 7 readings</span></div><div class="chart" id="chart" aria-label="Sample soil moisture chart"></div><div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div>
+   <div class="dash-controls"><label for="conditionSelect">Preview condition</label><select id="conditionSelect"><option value="normal">Balanced field</option><option value="dry">Dry soil</option><option value="hot">Hot weather</option><option value="stress">Crop stress alert</option></select><button class="btn btn-primary" id="refreshDemo" style="padding:9px 14px;font-size:.83rem">Update preview ↻</button></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="gallery">
+ <div class="container">
+  <div class="section-head"><div class="kicker">05 / Concept gallery</div><h2>Technology with the field in mind.</h2><p>Visual references for the kinds of components a future prototype could bring together.</p></div>
+  <div class="gallery-grid">
+   <article class="gallery-card"><div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80')"></div><div class="gallery-text"><span class="pill">01 · Field sensing</span><h3>Connected crop monitoring</h3><p>Sensor readings can help build a clearer picture of changing field conditions.</p></div></article>
+   <article class="gallery-card"><div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80')"></div><div class="gallery-text"><span class="pill">02 · AI analysis</span><h3>Crop image review</h3><p>Image analysis could help flag leaves that need a closer look.</p></div></article>
+   <article class="gallery-card"><div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80')"></div><div class="gallery-text"><span class="pill">03 · Web app</span><h3>Insight dashboard</h3><p>Charts and summaries make changing readings easier to understand.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section soft" id="impact">
+ <div class="container">
+  <div class="section-head"><div class="kicker">06 / Expected impact</div><h2>Built around meaningful outcomes.</h2><p>The project aims to demonstrate how accessible digital tools could support more informed agricultural decisions.</p></div>
+  <div class="impact-grid">
+   <div class="impact"><strong>01</strong><span>Earlier awareness</span><p>Make unusual field readings and potential crop concerns more visible.</p></div>
+   <div class="impact"><strong>02</strong><span>Smarter water use</span><p>Use soil information to support more deliberate irrigation decisions.</p></div>
+   <div class="impact"><strong>03</strong><span>Clearer insights</span><p>Bring scattered observations into one easy-to-read interface.</p></div>
+   <div class="impact"><strong>04</strong><span>Room to grow</span><p>Start with a small prototype and expand through testing and feedback.</p></div>
+  </div>
+  <p class="disclaimer">Note: AgroAI is presented here as a student project concept. Dashboard values and potential benefits are illustrative, not validated field results.</p>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="container">
+  <div class="contact-panel">
+   <div><div class="kicker" style="color:var(--lime)">07 / Let's connect</div><h2>Have an idea for a smarter farm?</h2><p>This portfolio can be adapted for a college project presentation, a prototype showcase, or a student developer profile. Share a note to preview the form interaction.</p><p style="font-size:.9rem">Student project · AI · IoT · Sustainable agriculture</p></div>
+   <form class="contact-form" id="contactForm">
+    <input id="name" name="name" placeholder="Your name" required aria-label="Your name">
+    <input id="email" name="email" type="email" placeholder="Email address" required aria-label="Email address">
+    <textarea id="message" name="message" placeholder="Tell me what you'd like to explore..." required aria-label="Message"></textarea>
+    <button class="btn btn-primary" type="submit">Send a demo message ↗</button><div class="form-message" id="formMessage" role="status"></div>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+<footer><div class="container footer-row"><a class="brand" href="#home"><span class="brand-mark">✿</span><span>AgroAI<small>SMART FARMING · BETTER TOMORROW</small></span></a><div class="footer-links"><a href="#about">About</a><a href="#features">Features</a><a href="#workflow">Workflow</a><a href="#contact">Contact</a></div><p>© <span id="year"></span> AgroAI · Student concept portfolio</p></div></footer>
+<div class="toast" id="toast" role="status">Dashboard updated</div>
+<script>
+const menuToggle=document.getElementById('menuToggle'),navlinks=document.getElementById('navlinks');
+menuToggle.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰'});
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰'}));
+document.getElementById('year').textContent=new Date().getFullYear();
+const scenarios={
+ normal:{moisture:65,temp:28,health:92,status:'● Conditions stable',moistureNote:'Good range',healthNote:'Healthy signals',bars:[43,53,49,66,61,73,65]},
+ dry:{moisture:29,temp:30,health:81,status:'● Soil is dry',moistureNote:'Check irrigation',healthNote:'Monitor crop',bars:[73,65,58,51,43,35,29]},
+ hot:{moisture:48,temp:36,health:84,status:'● Heat watch',moistureNote:'Moisture falling',healthNote:'Monitor crop',bars:[67,62,59,55,53,50,48]},
+ stress:{moisture:52,temp:31,health:61,status:'● Review field',moistureNote:'Moderate range',healthNote:'Inspect crop',bars:[59,61,57,60,55,54,52]}
+};
+function updateDashboard(){const s=scenarios[document.getElementById('conditionSelect').value];document.getElementById('moistureValue').textContent=s.moisture+'%';document.getElementById('tempValue').textContent=s.temp+'°C';document.getElementById('healthValue').textContent=s.health+'%';document.getElementById('fieldStatus').textContent=s.status;document.getElementById('moistureNote').textContent=s.moistureNote;document.getElementById('healthNote').textContent=s.healthNote;const chart=document.getElementById('chart');chart.innerHTML='';s.bars.forEach((v,i)=>{const bar=document.createElement('div');bar.className='bar';bar.style.height=v+'%';bar.title=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]+': '+v+'%';chart.appendChild(bar)});const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
+document.getElementById('refreshDemo').addEventListener('click',updateDashboard);document.getElementById('conditionSelect').addEventListener('change',updateDashboard);updateDashboard();
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim();document.getElementById('formMessage').textContent=`Thanks, ${name}! This demo form is interactive, but it doesn't send or store messages.`;e.target.reset()});
+const sections=[...document.querySelectorAll('main section[id]')];const links=[...document.querySelectorAll('.navlinks a')];window.addEventListener('scroll',()=>{let current='home';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)current=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current))},{passive:true});
+</script>
+</body>
+</html>
